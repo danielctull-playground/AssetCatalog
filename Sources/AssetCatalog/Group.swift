@@ -15,10 +15,8 @@ extension Group {
     public init(url: URL) throws {
 
         guard url.pathExtension == "" else {
-            struct UnknownFileType: Error {
-                let pathExtension: String
-            }
-            throw UnknownFileType(pathExtension: url.pathExtension)
+            throw IncorrectFileExtension(expected: "",
+                                         received: url.pathExtension)
         }
 
         self.init(name: url.filename, items: try Array(url: url))
