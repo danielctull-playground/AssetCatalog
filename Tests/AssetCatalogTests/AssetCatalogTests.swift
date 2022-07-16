@@ -14,7 +14,6 @@ extension Bundle {
 final class AssetCatalogTests: XCTestCase {
 
     func test() throws {
-        print(Bundle.module.bundleURL)
         let url = try Bundle.module.assetsURL(named: "Assets")
         let catalog = try AssetCatalog(url: url)
         XCTAssertEqual(catalog.name, "Assets")
