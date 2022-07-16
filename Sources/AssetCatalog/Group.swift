@@ -24,15 +24,6 @@ extension Group {
         var name = url.lastPathComponent
         name.removeLast(url.pathExtension.count + 1)
 
-        let contents = try FileManager().contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
-
-        let items = try contents.map { url in
-            switch url.pathExtension {
-            case "": return try Item.group(Group(url: url))
-            default: return try Item.asset(Asset(url: url))
-            }
-        }
-
-        self.init(name: name, items: items)
+        self.init(name: name, items: try Array(url: url))
     }
 }
