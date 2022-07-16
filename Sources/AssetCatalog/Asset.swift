@@ -12,8 +12,6 @@ public struct Asset: Equatable {
 extension Asset {
 
     public init(url: URL) throws {
-        var name = url.lastPathComponent
-        name.removeLast(url.pathExtension.count + 1)
-        self.init(name: name)
+        self.init(name: url.filename)
     }
 }

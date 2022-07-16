@@ -21,9 +21,6 @@ extension AssetCatalog {
             throw UnknownFileType(pathExtension: url.pathExtension)
         }
 
-        var name = url.lastPathComponent
-        name.removeLast(url.pathExtension.count + 1)
-
-        self.init(name: name, items: try Array(url: url))
+        self.init(name: url.filename, items: try Array(url: url))
     }
 }
