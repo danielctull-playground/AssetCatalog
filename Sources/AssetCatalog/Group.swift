@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct AssetCatalog: Equatable {
+public struct Group: Equatable {
     public let name: String
     public let items: [Item]
     public init(name: String, items: [Item]) {
@@ -10,11 +10,11 @@ public struct AssetCatalog: Equatable {
     }
 }
 
-extension AssetCatalog {
+extension Group {
 
     public init(url: URL) throws {
 
-        guard url.pathExtension == "xcassets" else {
+        guard url.pathExtension == "" else {
             struct UnknownFileType: Error {
                 let pathExtension: String
             }
@@ -26,9 +26,8 @@ extension AssetCatalog {
 
         let contents = try FileManager().contentsOfDirectory(at: url, includingPropertiesForKeys: nil)
 
-        let items: [Item] = try contents.compactMap { url in
+        let items = try contents.map { url in
             switch url.pathExtension {
-            case "json": return nil
             case "": return try Item.group(Group(url: url))
             default: return try Item.asset(Asset(url: url))
             }

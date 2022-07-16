@@ -18,5 +18,8 @@ final class AssetCatalogTests: XCTestCase {
         let url = try Bundle.module.assetsURL(named: "Assets")
         let catalog = try AssetCatalog(url: url)
         XCTAssertEqual(catalog.name, "Assets")
+        XCTAssertEqual(catalog.items, [
+            .asset(Asset(name: "Color"))
+        ])
     }
 }
