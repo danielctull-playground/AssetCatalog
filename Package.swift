@@ -14,7 +14,16 @@ let package = Package(
         .library(name: "AssetCatalog", targets: ["AssetCatalog"]),
     ],
     targets: [
+
         .target(name: "AssetCatalog"),
-        .testTarget(name: "AssetCatalogTests", dependencies: ["AssetCatalog"]),
+
+        .testTarget(
+            name: "AssetCatalogTests",
+            dependencies: [
+                "AssetCatalog"
+            ],
+            resources: [
+                .copy("Resources")
+            ]),
     ]
 )
