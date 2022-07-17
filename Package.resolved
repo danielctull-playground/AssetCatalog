@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "filebuilder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielctull-playground/FileBuilder",
+      "state" : {
+        "branch" : "main",
+        "revision" : "0098f61d329d957dbda8f0a864e74a9e7a3e9093"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "6b2aa2748a7881eebb9f84fb10c01293e15b52ca",
+        "version" : "0.5.0"
+      }
+    }
+  ],
+  "version" : 2
+}

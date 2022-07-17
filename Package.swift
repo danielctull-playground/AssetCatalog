@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.6
 
 import PackageDescription
 
@@ -13,9 +13,14 @@ let package = Package(
     products: [
         .library(name: "AssetCatalog", targets: ["AssetCatalog"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-argument-parser", from: "0.5.0"),
+        .package(url: "https://github.com/danielctull-playground/FileBuilder", branch: "main"),
+    ],
     targets: [
 
-        .target(name: "AssetCatalog"),
+        .target(
+            name: "AssetCatalog"),
 
         .testTarget(
             name: "AssetCatalogTests",
@@ -24,6 +29,25 @@ let package = Package(
             ],
             resources: [
                 .copy("Resources")
+            ]),
+
+        // MARK: - Tool
+
+        .executableTarget(
+            name: "AssetCatalogTool",
+            dependencies: [
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                "AssetCatalog",
+                "FileBuilder",
+            ]),
+
+        // MARK: - Plugin
+
+        .plugin(
+            name: "GenerateAssetCatalog",
+            capability: .buildTool(),
+            dependencies: [
+                "AssetCatalogTool",
             ]),
     ]
 )
