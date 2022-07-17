@@ -2,8 +2,19 @@
 import Foundation
 
 public enum Item: Equatable {
-    case group(Group)
     case asset(Asset)
+    case group(Group)
+}
+
+extension Item {
+
+    public static func asset(name: String, kind: Asset.Kind) -> Self {
+        .asset(Asset(name: name, kind: kind))
+    }
+
+    public static func group(name: String, items: [Item]) -> Self {
+        .group(Group(name: name, items: items))
+    }
 }
 
 extension Array where Element == Item {
