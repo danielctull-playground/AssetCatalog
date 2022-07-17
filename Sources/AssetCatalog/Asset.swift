@@ -21,30 +21,34 @@ extension Asset {
 
 extension Asset {
 
-    public enum Kind: Equatable {
-        case appIcon
-        case arReferenceImage
-        case arResourceGroup
-        case brandAssets
-        case cubeTexture
-        case dataSet
-        case gameCenterDashboardImageSet
-        case gameCenterLeaderboard
-        case gameCenterLeaderboardSet
-        case iconSet
-        case imageSet
-        case imageStack
-        case imageStackLayer
-        case launchImage
-        case mipmap
-        case namedColor
-        case spriteAtlas
-        case sticker
-        case stickerPack
-        case stickerSequence
-        case texture
-        case watchComplications
+    public struct Kind: Equatable {
+        let rawValue: String
     }
+}
+
+extension Asset.Kind {
+    public static let appIcon = Self(rawValue: "appiconset")
+    public static let arReferenceImage = Self(rawValue: "arimageset")
+    public static let arResourceGroup = Self(rawValue: "arresourcegroup")
+    public static let brandAssets = Self(rawValue: "brandassets")
+    public static let cubeTexture = Self(rawValue: "cubetextureset")
+    public static let dataSet = Self(rawValue: "dataset")
+    public static let gameCenterDashboardImageSet = Self(rawValue: "gcdashboardimage")
+    public static let gameCenterLeaderboard = Self(rawValue: "gcleaderboard")
+    public static let gameCenterLeaderboardSet = Self(rawValue: "gcleaderboardset")
+    public static let iconSet = Self(rawValue: "iconset")
+    public static let imageSet = Self(rawValue: "imageset")
+    public static let imageStack = Self(rawValue: "imagestack")
+    public static let imageStackLayer = Self(rawValue: "imagestacklayer")
+    public static let launchImage = Self(rawValue: "launchimage")
+    public static let mipmap = Self(rawValue: "mipmapset")
+    public static let namedColor = Self(rawValue: "colorset")
+    public static let spriteAtlas = Self(rawValue: "spriteatlas")
+    public static let sticker = Self(rawValue: "sticker")
+    public static let stickerPack = Self(rawValue: "stickerpack")
+    public static let stickerSequence = Self(rawValue: "stickersequence")
+    public static let texture = Self(rawValue: "textureset")
+    public static let watchComplications = Self(rawValue: "complicationset")
 }
 
 struct UnknownAssetType: Error {
@@ -54,30 +58,6 @@ struct UnknownAssetType: Error {
 extension Asset.Kind {
 
     init(url: URL) throws {
-        switch url.pathExtension {
-        case "appiconset": self = .appIcon
-        case "arimageset": self = .arReferenceImage
-        case "arresourcegroup": self = .arResourceGroup
-        case "brandassets": self = .brandAssets
-        case "cubetextureset": self = .cubeTexture
-        case "dataset": self = .dataSet
-        case "gcdashboardimage": self = .gameCenterDashboardImageSet
-        case "gcleaderboard": self = .gameCenterLeaderboard
-        case "gcleaderboardset": self = .gameCenterLeaderboardSet
-        case "iconset": self = .iconSet
-        case "imageset": self = .imageSet
-        case "imagestack": self = .imageStack
-        case "imagestacklayer": self = .imageStackLayer
-        case "launchimage": self = .launchImage
-        case "mipmapset": self = .mipmap
-        case "colorset": self = .namedColor
-        case "spriteatlas": self = .spriteAtlas
-        case "sticker": self = .sticker
-        case "stickerpack": self = .stickerPack
-        case "stickersequence": self = .stickerSequence
-        case "textureset": self = .texture
-        case "complicationset": self = .watchComplications
-        default: throw UnknownAssetType(pathExtension: url.pathExtension)
-        }
+        self.init(rawValue: url.pathExtension)
     }
 }
