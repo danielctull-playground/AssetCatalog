@@ -16,7 +16,7 @@ struct AssetCatalogTool: ParsableCommand {
     func run() throws {
 
         let catalog = try AssetCatalog(url: input)
-        let colors = catalog.items.allAssets.filter { $0.kind == .namedColor }
+        let colors = catalog.allAssets.filter { $0.kind == .namedColor }
 
         let file = File {
             "import SwiftUI"
@@ -29,18 +29,6 @@ struct AssetCatalogTool: ParsableCommand {
         }
 
         try file.content.write(to: output, atomically: true, encoding: .utf8)
-    }
-}
-
-extension Array where Element == Item {
-
-    var allAssets: [Asset] {
-        flatMap { item in
-            switch item {
-            case let .group(group): return group.items.allAssets
-            case let .asset(asset): return [asset]
-            }
-        }
     }
 }
 

@@ -20,5 +20,8 @@ final class AssetCatalogTests: XCTestCase {
         XCTAssertEqual(catalog.items, [
             .asset(name: "Color", kind: .namedColor),
         ])
+        XCTAssertEqual(catalog.allAssets, [
+            Asset(name: "Color", kind: .namedColor),
+        ])
     }
 }

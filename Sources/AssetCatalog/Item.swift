@@ -32,4 +32,13 @@ extension Array where Element == Item {
             }
         }
     }
+
+    var allAssets: [Asset] {
+        flatMap { item in
+            switch item {
+            case let .group(group): return group.items.allAssets
+            case let .asset(asset): return [asset]
+            }
+        }
+    }
 }
