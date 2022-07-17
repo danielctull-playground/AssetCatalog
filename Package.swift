@@ -49,5 +49,14 @@ let package = Package(
             dependencies: [
                 "AssetCatalogTool",
             ]),
+
+        .testTarget(
+            name: "AssetCatalogPluginTests",
+            resources: [
+                .process("Resources")
+            ],
+            plugins: [
+                "GenerateAssetCatalog",
+            ]),
     ]
 )
