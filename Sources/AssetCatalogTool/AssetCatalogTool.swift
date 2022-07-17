@@ -28,7 +28,7 @@ struct AssetCatalogTool: ParsableCommand {
             }
         }
 
-        try file.content.write(to: output, atomically: true, encoding: .utf8)
+        try file.write(to: output, atomically: true, encoding: .utf8)
     }
 }
 
