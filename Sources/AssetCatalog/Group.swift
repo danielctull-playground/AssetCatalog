@@ -21,4 +21,8 @@ extension Group {
 
         self.init(name: url.filename, items: try Array(url: url))
     }
+
+    public var allAssets: [Asset] {
+        items.allAssets
+    }
 }
