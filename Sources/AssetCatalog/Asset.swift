@@ -37,7 +37,7 @@ extension Asset {
         case imageStackLayer
         case launchImage
         case mipmap
-        case namedColor
+        case namedColor(NamedColor)
         case spriteAtlas
         case sticker
         case stickerPack
@@ -70,7 +70,7 @@ extension Asset.Kind {
         case "imagestacklayer": self = .imageStackLayer
         case "launchimage": self = .launchImage
         case "mipmapset": self = .mipmap
-        case "colorset": self = .namedColor
+        case "colorset": self = try .namedColor(NamedColor(url: url))
         case "spriteatlas": self = .spriteAtlas
         case "sticker": self = .sticker
         case "stickerpack": self = .stickerPack
