@@ -54,6 +54,7 @@ struct UnknownAssetType: Error {
 extension Asset.Kind {
 
     init(url: URL) throws {
+        let contents = url.appendingPathComponent("Contents.json")
         switch url.pathExtension {
         case "appiconset": self = .appIcon
         case "arimageset": self = .arReferenceImage
@@ -70,7 +71,7 @@ extension Asset.Kind {
         case "imagestacklayer": self = .imageStackLayer
         case "launchimage": self = .launchImage
         case "mipmapset": self = .mipmap
-        case "colorset": self = try .namedColor(NamedColor(url: url))
+        case "colorset": self = try .namedColor(NamedColor(url: contents))
         case "spriteatlas": self = .spriteAtlas
         case "sticker": self = .sticker
         case "stickerpack": self = .stickerPack

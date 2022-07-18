@@ -18,10 +18,10 @@ final class AssetCatalogTests: XCTestCase {
         let catalog = try AssetCatalog(url: url)
         XCTAssertEqual(catalog.name, "Assets")
         XCTAssertEqual(catalog.items, [
-            .asset(name: "Color", kind: .namedColor(NamedColor())),
+            .asset(name: "Color", kind: .namedColor(NamedColor(info: Info(author: "xcode", version: 1)))),
         ])
         XCTAssertEqual(catalog.allAssets, [
-            Asset(name: "Color", kind: .namedColor(NamedColor())),
+            Asset(name: "Color", kind: .namedColor(NamedColor(info: Info(author: "xcode", version: 1)))),
         ])
     }
 }
