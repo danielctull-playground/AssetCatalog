@@ -18,9 +18,11 @@ extension NamedColor {
 
     public struct Value: Equatable {
         public let color: Color
+        public let idiom: Idiom
 
-        public init(color: Color) {
+        public init(color: Color, idiom: Idiom) {
             self.color = color
+            self.idiom = idiom
         }
     }
 }
@@ -55,11 +57,13 @@ extension NamedColor.Value {
 
     init(codable: CodableNamedColorValue) {
         self.init(
-            color: Color(codable: codable.color))
+            color: Color(codable: codable.color),
+            idiom: Idiom(codable: codable.idiom))
     }
 
 }
 
 struct CodableNamedColorValue: Decodable {
     let color: CodableColor
+    let idiom: CodableIdiom
 }
