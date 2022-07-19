@@ -24,11 +24,11 @@ final class AssetCatalogTests: XCTestCase {
                     info: Info(author: "xcode", version: 1),
                     values: [
                         NamedColor.Value(
-                            color: Color(colorSpace: .sRGB),
+                            color: Color(colorSpace: .sRGB, red: 1, green: 1, blue: 1, alpha: 1),
                             displayGamut: DisplayGamut.sRGB,
                             idiom: .universal),
                         NamedColor.Value(
-                            color: Color(colorSpace: .sRGB),
+                            color: Color(colorSpace: .sRGB, red: 1, green: 1, blue: 1, alpha: 1),
                             displayGamut: DisplayGamut.sRGB,
                             idiom: .universal)
                     ]))),
@@ -40,11 +40,11 @@ final class AssetCatalogTests: XCTestCase {
                     info: Info(author: "xcode", version: 1),
                     values: [
                         NamedColor.Value(
-                            color: Color(colorSpace: .sRGB),
+                            color: Color(colorSpace: .sRGB, red: 1, green: 1, blue: 1, alpha: 1),
                             displayGamut: DisplayGamut.sRGB,
                             idiom: .universal),
                         NamedColor.Value(
-                            color: Color(colorSpace: .sRGB),
+                            color: Color(colorSpace: .sRGB, red: 1, green: 1, blue: 1, alpha: 1),
                             displayGamut: DisplayGamut.sRGB,
                             idiom: .universal)
                     ]))),
