@@ -23,8 +23,14 @@ struct CodableColorSpace: RawRepresentable, Codable {
 
 extension ColorSpace {
 
-    init(codable: CodableColorSpace) {
-        self.init(codable.rawValue)
+    // If tag is not included, this is the same as specifying sRGB.
+    // https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/ImageSetType.html#//apple_ref/doc/uid/TP40015170-CH25-SW5
+    init(codable: CodableColorSpace?) {
+        if let rawValue = codable?.rawValue {
+            self.init(rawValue)
+        } else {
+            self = .sRGB
+        }
     }
 }
 

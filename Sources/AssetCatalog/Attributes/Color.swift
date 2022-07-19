@@ -15,7 +15,7 @@ struct CodableColor: Codable {
         case colorSpace = "color-space"
     }
 
-    let colorSpace: CodableColorSpace
+    let colorSpace: CodableColorSpace?
 }
 
 extension Color {
