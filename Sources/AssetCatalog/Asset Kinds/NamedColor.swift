@@ -3,11 +3,25 @@ import Foundation
 
 public struct NamedColor: Equatable {
     public let info: Info
+    public let values: [Value]
 
     public init(
-        info: Info
+        info: Info,
+        values: [Value]
     ) {
         self.info = info
+        self.values = values
+    }
+}
+
+extension NamedColor {
+
+    public struct Value: Equatable {
+        public let color: Color
+
+        public init(color: Color) {
+            self.color = color
+        }
     }
 }
 
@@ -23,22 +37,29 @@ extension NamedColor {
 
 // MARK: - Codable
 
-struct CodableNamedColor: Codable {
+struct CodableNamedColor: Decodable {
     let info: CodableInfo
+    let colors: [CodableNamedColorValue]
 }
 
 extension NamedColor {
 
     init(codable: CodableNamedColor) {
         self.init(
-            info: Info(codable: codable.info))
+            info: Info(codable: codable.info),
+            values: codable.colors.map(Value.init))
     }
 }
 
-extension CodableNamedColor {
+extension NamedColor.Value {
 
-    init(namedColor: NamedColor) {
+    init(codable: CodableNamedColorValue) {
         self.init(
-            info: CodableInfo(info: namedColor.info))
+            color: Color(codable: codable.color))
     }
+
+}
+
+struct CodableNamedColorValue: Decodable {
+    let color: CodableColor
 }
