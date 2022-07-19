@@ -17,21 +17,8 @@ extension DisplayGamut {
 
 // MARK: - Codable
 
-struct CodableDisplayGamut {
+struct CodableDisplayGamut: RawRepresentable, Codable {
     let rawValue: String
-}
-
-extension CodableDisplayGamut: Codable {
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        rawValue = try container.decode(String.self)
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(rawValue)
-    }
 }
 
 extension DisplayGamut {

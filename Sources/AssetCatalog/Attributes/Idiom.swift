@@ -47,21 +47,8 @@ extension Idiom {
 
 // MARK: - Codable
 
-struct CodableIdiom {
+struct CodableIdiom: RawRepresentable, Codable {
     let rawValue: String
-}
-
-extension CodableIdiom: Codable {
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        rawValue = try container.decode(String.self)
-    }
-
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        try container.encode(rawValue)
-    }
 }
 
 extension Idiom {
