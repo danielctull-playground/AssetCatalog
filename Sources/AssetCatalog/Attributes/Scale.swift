@@ -1,15 +1,17 @@
 
 public struct Scale: Equatable {
-    fileprivate let rawValue: String?
-    public init(_ rawValue: String?) {
+    fileprivate let rawValue: String
+    public init(_ rawValue: String) {
         self.rawValue = rawValue
     }
 }
 
-extension Scale {
+extension Scale: OptionalAttribute {
+
+    static let nilValue = Scale.pdf
 
     /// The image is for any display scale and should point to a .pdf file.
-    public static let pdf = Self(nil)
+    public static let pdf = Self("")
 
     /// Targeted for unscaled displays.
     public static let bitmap1x = Self("1x")
@@ -24,13 +26,9 @@ extension Scale {
 
 // MARK: - Codable
 
-struct CodableScale: RawRepresentable, Decodable {
-    let rawValue: String
-}
-
 extension Scale {
 
-    init(codable: CodableScale?) {
-        self.init(codable?.rawValue)
+    struct Codable: RawRepresentable, Decodable {
+        let rawValue: String
     }
 }

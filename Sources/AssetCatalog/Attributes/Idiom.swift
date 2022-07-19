@@ -6,7 +6,9 @@ public struct Idiom: Equatable {
     }
 }
 
-extension Idiom {
+extension Idiom: OptionalAttribute {
+
+    static let nilValue = Idiom.universal
 
     /// An image shown app launcher on watchOS.
     public static let appLauncher = Idiom("appLauncher")
@@ -47,26 +49,9 @@ extension Idiom {
 
 // MARK: - Codable
 
-struct CodableIdiom: RawRepresentable, Decodable {
-    let rawValue: String
-}
-
 extension Idiom {
 
-    // If tag is not included, this is the same as specifying universal.
-    // https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/ImageSetType.html#//apple_ref/doc/uid/TP40015170-CH25-SW2
-    init(codable: CodableIdiom?) {
-        if let rawValue = codable?.rawValue {
-            self.init(rawValue)
-        } else {
-            self = .universal
-        }
-    }
-}
-
-extension CodableIdiom {
-
-    init(idiom: Idiom) {
-        self.init(rawValue: idiom.rawValue)
+    struct Codable: RawRepresentable, Decodable {
+        let rawValue: String
     }
 }

@@ -69,8 +69,8 @@ extension ImageSet.Value {
         self.init(
             colorSpace: ColorSpace(codable.colorSpace),
             displayGamut: DisplayGamut(codable.displayGamut),
-            idiom: Idiom(codable: codable.idiom),
-            scale: Scale(codable: codable.scale))
+            idiom: Idiom(codable.idiom),
+            scale: Scale(codable.scale))
     }
 }
 
@@ -85,6 +85,6 @@ struct CodableImageSetValue: Decodable {
 
     let colorSpace: ColorSpace.Codable?
     let displayGamut: DisplayGamut.Codable?
-    let idiom: CodableIdiom?
-    let scale: CodableScale?
+    let idiom: Idiom.Codable?
+    let scale: Scale.Codable?
 }
