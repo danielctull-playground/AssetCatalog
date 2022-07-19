@@ -37,9 +37,9 @@ final class AssetCatalogTests: XCTestCase {
                 kind: .imageSet(ImageSet(
                     info: Info(author: "xcode", version: 1),
                     values: [
-                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal),
-                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal),
-                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal),
+                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal, scale: .bitmap1x),
+                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal, scale: .bitmap2x),
+                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal, scale: .bitmap3x),
                     ])))
         ])
         XCTAssertEqual(catalog.allAssets, [
@@ -62,9 +62,9 @@ final class AssetCatalogTests: XCTestCase {
                 kind: .imageSet(ImageSet(
                     info: Info(author: "xcode", version: 1),
                     values: [
-                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal),
-                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal),
-                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal),
+                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal, scale: .bitmap1x),
+                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal, scale: .bitmap2x),
+                        .init(colorSpace: .sRGB, displayGamut: .sRGB, idiom: .universal, scale: .bitmap3x),
                     ])))
         ])
     }
