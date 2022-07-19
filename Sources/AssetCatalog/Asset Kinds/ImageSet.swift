@@ -17,13 +17,17 @@ public struct ImageSet: Equatable {
 extension ImageSet {
 
     public struct Value: Equatable {
+
+        public let colorSpace: ColorSpace
         public let displayGamut: DisplayGamut
         public let idiom: Idiom
 
         public init(
+            colorSpace: ColorSpace,
             displayGamut: DisplayGamut,
             idiom: Idiom
         ) {
+            self.colorSpace = colorSpace
             self.displayGamut = displayGamut
             self.idiom = idiom
         }
@@ -60,6 +64,7 @@ extension ImageSet.Value {
 
     init(codable: CodableImageSetValue) {
         self.init(
+            colorSpace: ColorSpace(codable: codable.colorSpace),
             displayGamut: DisplayGamut(codable: codable.displayGamut),
             idiom: Idiom(codable: codable.idiom))
     }
@@ -68,10 +73,12 @@ extension ImageSet.Value {
 struct CodableImageSetValue: Decodable {
 
     enum CodingKeys: String, CodingKey {
+        case colorSpace = "color-space"
         case displayGamut = "display-gamut"
         case idiom
     }
 
+    let colorSpace: CodableColorSpace?
     let displayGamut: CodableDisplayGamut?
     let idiom: CodableIdiom?
 }

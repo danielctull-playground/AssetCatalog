@@ -33,10 +33,3 @@ extension ColorSpace {
         }
     }
 }
-
-extension CodableColorSpace {
-
-    init(colorSpace: ColorSpace) {
-        self.init(rawValue: colorSpace.rawValue)
-    }
-}
