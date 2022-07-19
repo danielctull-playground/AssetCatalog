@@ -32,7 +32,7 @@ extension Asset {
         case gameCenterLeaderboard
         case gameCenterLeaderboardSet
         case iconSet
-        case imageSet
+        case imageSet(ImageSet)
         case imageStack
         case imageStackLayer
         case launchImage
@@ -66,7 +66,7 @@ extension Asset.Kind {
         case "gcleaderboard": self = .gameCenterLeaderboard
         case "gcleaderboardset": self = .gameCenterLeaderboardSet
         case "iconset": self = .iconSet
-        case "imageset": self = .imageSet
+        case "imageset": self = try .imageSet(ImageSet(url: contents))
         case "imagestack": self = .imageStack
         case "imagestacklayer": self = .imageStackLayer
         case "launchimage": self = .launchImage

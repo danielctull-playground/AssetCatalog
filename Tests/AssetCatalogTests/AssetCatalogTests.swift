@@ -32,6 +32,15 @@ final class AssetCatalogTests: XCTestCase {
                             displayGamut: DisplayGamut.sRGB,
                             idiom: .universal)
                     ]))),
+            .asset(
+                name: "Image",
+                kind: .imageSet(ImageSet(
+                    info: Info(author: "xcode", version: 1),
+                    values: [
+                        .init(displayGamut: .sRGB, idiom: .universal),
+                        .init(displayGamut: .sRGB, idiom: .universal),
+                        .init(displayGamut: .sRGB, idiom: .universal),
+                    ])))
         ])
         XCTAssertEqual(catalog.allAssets, [
             Asset(
@@ -48,6 +57,15 @@ final class AssetCatalogTests: XCTestCase {
                             displayGamut: DisplayGamut.sRGB,
                             idiom: .universal)
                     ]))),
+            Asset(
+                name: "Image",
+                kind: .imageSet(ImageSet(
+                    info: Info(author: "xcode", version: 1),
+                    values: [
+                        .init(displayGamut: .sRGB, idiom: .universal),
+                        .init(displayGamut: .sRGB, idiom: .universal),
+                        .init(displayGamut: .sRGB, idiom: .universal),
+                    ])))
         ])
     }
 }
