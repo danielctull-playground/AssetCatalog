@@ -6,7 +6,15 @@ public struct ColorSpace: Equatable {
     }
 }
 
-extension ColorSpace {
+protocol OptionalAttribute {
+    associatedtype Codable: RawRepresentable
+    static var nilValue: Self { get }
+    init(_ rawValue: Codable.RawValue)
+}
+
+extension ColorSpace: OptionalAttribute {
+
+    public static let nilValue = ColorSpace.sRGB
 
     /// The image uses the standard sRGB color space.
     public static let sRGB = ColorSpace("srgb")
@@ -17,19 +25,21 @@ extension ColorSpace {
 
 // MARK: - Codable
 
-struct CodableColorSpace: RawRepresentable, Decodable {
-    let rawValue: String
-}
-
 extension ColorSpace {
 
-    // If tag is not included, this is the same as specifying sRGB.
-    // https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/ImageSetType.html#//apple_ref/doc/uid/TP40015170-CH25-SW5
-    init(codable: CodableColorSpace?) {
+    struct Codable: RawRepresentable, Decodable {
+        let rawValue: String
+    }
+}
+
+extension OptionalAttribute {
+
+    init(_ codable: Codable?) {
+        
         if let rawValue = codable?.rawValue {
             self.init(rawValue)
         } else {
-            self = .sRGB
+            self = .nilValue
         }
     }
 }

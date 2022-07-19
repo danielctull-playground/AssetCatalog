@@ -60,7 +60,7 @@ extension NamedColor.Value {
     init(codable: CodableNamedColorValue) {
         self.init(
             color: Color(codable: codable.color),
-            displayGamut: DisplayGamut(codable: codable.displayGamut),
+            displayGamut: DisplayGamut(codable.displayGamut),
             idiom: Idiom(codable: codable.idiom))
     }
 }
@@ -74,6 +74,6 @@ struct CodableNamedColorValue: Decodable {
     }
 
     let color: CodableColor
-    let displayGamut: CodableDisplayGamut?
+    let displayGamut: DisplayGamut.Codable?
     let idiom: CodableIdiom?
 }

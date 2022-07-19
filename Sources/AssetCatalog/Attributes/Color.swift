@@ -42,7 +42,7 @@ struct CodableColor: Decodable {
         case components
     }
 
-    fileprivate let colorSpace: CodableColorSpace?
+    fileprivate let colorSpace: ColorSpace.Codable?
     fileprivate let components: Components
 }
 
@@ -74,7 +74,7 @@ extension Color {
 
     init(codable: CodableColor) {
         self.init(
-            colorSpace: ColorSpace(codable: codable.colorSpace),
+            colorSpace: ColorSpace(codable.colorSpace),
             red: codable.components.red.rawValue,
             green: codable.components.green.rawValue,
             blue: codable.components.blue.rawValue,
