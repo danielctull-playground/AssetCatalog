@@ -23,11 +23,11 @@ public struct Color: Equatable {
 
 // MARK: - Codable
 
-struct CodableColor: Codable {
+struct CodableColor: Decodable {
 
-    fileprivate struct Components: Codable {
+    fileprivate struct Components: Decodable {
 
-        fileprivate struct Value: Codable {
+        fileprivate struct Value: Decodable {
             let rawValue: Double
         }
 

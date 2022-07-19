@@ -17,7 +17,7 @@ extension ColorSpace {
 
 // MARK: - Codable
 
-struct CodableColorSpace: RawRepresentable, Codable {
+struct CodableColorSpace: RawRepresentable, Decodable {
     let rawValue: String
 }
 

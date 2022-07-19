@@ -17,7 +17,7 @@ extension DisplayGamut {
 
 // MARK: - Codable
 
-struct CodableDisplayGamut: RawRepresentable, Codable {
+struct CodableDisplayGamut: RawRepresentable, Decodable {
     let rawValue: String
 }
 

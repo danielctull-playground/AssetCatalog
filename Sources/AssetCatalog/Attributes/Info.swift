@@ -11,7 +11,7 @@ public struct Info: Equatable {
 
 // MARK: - Codable
 
-struct CodableInfo: Codable {
+struct CodableInfo: Decodable {
     let author: String
     let version: Int
 }

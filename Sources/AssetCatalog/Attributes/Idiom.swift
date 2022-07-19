@@ -47,7 +47,7 @@ extension Idiom {
 
 // MARK: - Codable
 
-struct CodableIdiom: RawRepresentable, Codable {
+struct CodableIdiom: RawRepresentable, Decodable {
     let rawValue: String
 }
 
