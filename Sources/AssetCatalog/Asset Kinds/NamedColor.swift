@@ -18,10 +18,12 @@ extension NamedColor {
 
     public struct Value: Equatable {
         public let color: Color
+        public let displayGamut: DisplayGamut
         public let idiom: Idiom
 
-        public init(color: Color, idiom: Idiom) {
+        public init(color: Color, displayGamut: DisplayGamut, idiom: Idiom) {
             self.color = color
+            self.displayGamut = displayGamut
             self.idiom = idiom
         }
     }
@@ -58,12 +60,20 @@ extension NamedColor.Value {
     init(codable: CodableNamedColorValue) {
         self.init(
             color: Color(codable: codable.color),
+            displayGamut: DisplayGamut(codable: codable.displayGamut),
             idiom: Idiom(codable: codable.idiom))
     }
-
 }
 
 struct CodableNamedColorValue: Decodable {
+
+    enum CodingKeys: String, CodingKey {
+        case color
+        case displayGamut = "display-gamut"
+        case idiom
+    }
+
     let color: CodableColor
-    let idiom: CodableIdiom
+    let displayGamut: CodableDisplayGamut?
+    let idiom: CodableIdiom?
 }

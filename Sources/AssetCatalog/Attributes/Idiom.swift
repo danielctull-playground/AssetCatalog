@@ -48,14 +48,14 @@ extension Idiom {
 // MARK: - Codable
 
 struct CodableIdiom {
-    let rawValue: String?
+    let rawValue: String
 }
 
 extension CodableIdiom: Codable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        rawValue = try container.decode(String?.self)
+        rawValue = try container.decode(String.self)
     }
 
     func encode(to encoder: Encoder) throws {
@@ -68,8 +68,8 @@ extension Idiom {
 
     // If tag is not included, this is the same as specifying universal.
     // https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_ref-Asset_Catalog_Format/ImageSetType.html#//apple_ref/doc/uid/TP40015170-CH25-SW2
-    init(codable: CodableIdiom) {
-        if let rawValue = codable.rawValue {
+    init(codable: CodableIdiom?) {
+        if let rawValue = codable?.rawValue {
             self.init(rawValue)
         } else {
             self = .universal

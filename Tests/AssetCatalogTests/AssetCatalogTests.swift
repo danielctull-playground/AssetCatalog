@@ -23,8 +23,14 @@ final class AssetCatalogTests: XCTestCase {
                 kind: .namedColor(NamedColor(
                     info: Info(author: "xcode", version: 1),
                     values: [
-                        NamedColor.Value(color: Color(colorSpace: .sRGB), idiom: .universal),
-                        NamedColor.Value(color: Color(colorSpace: .sRGB), idiom: .universal)
+                        NamedColor.Value(
+                            color: Color(colorSpace: .sRGB),
+                            displayGamut: DisplayGamut.sRGB,
+                            idiom: .universal),
+                        NamedColor.Value(
+                            color: Color(colorSpace: .sRGB),
+                            displayGamut: DisplayGamut.sRGB,
+                            idiom: .universal)
                     ]))),
         ])
         XCTAssertEqual(catalog.allAssets, [
@@ -33,8 +39,14 @@ final class AssetCatalogTests: XCTestCase {
                 kind: .namedColor(NamedColor(
                     info: Info(author: "xcode", version: 1),
                     values: [
-                        NamedColor.Value(color: Color(colorSpace: .sRGB), idiom: .universal),
-                        NamedColor.Value(color: Color(colorSpace: .sRGB), idiom: .universal)
+                        NamedColor.Value(
+                            color: Color(colorSpace: .sRGB),
+                            displayGamut: DisplayGamut.sRGB,
+                            idiom: .universal),
+                        NamedColor.Value(
+                            color: Color(colorSpace: .sRGB),
+                            displayGamut: DisplayGamut.sRGB,
+                            idiom: .universal)
                     ]))),
         ])
     }
